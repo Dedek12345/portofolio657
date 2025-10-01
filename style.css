@@ -1,0 +1,145 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 1rem;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* Sections */
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.summary-section,
+.education-section,
+.experience-section,
+.skills-section,
+.contact-section {
+  background-color: #fff;
+  margin: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.summary-section h2,
+.education-section h2,
+.experience-section h2,
+.skills-section h2,
+.contact-section h2 {
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+.experience-section ul,
+.skills-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.experience-section li,
+.skills-section li {
+  background-color: #f8f9fa;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.contact-section a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 2rem 1rem;
+  }
+
+  .summary-section,
+  .education-section,
+  .experience-section,
+  .skills-section,
+  .contact-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
