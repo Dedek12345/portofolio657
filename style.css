@@ -57,6 +57,10 @@ body {
 /* Sections */
 section { padding: 5rem 0; }
 .card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: var(--shadow); }
+.details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.job-header { font-weight: 700; margin-bottom: .25rem; }
+.job-meta { color: var(--muted); font-size: .95rem; margin-bottom: .5rem; }
+.job-points { list-style: disc; padding-left: 1.25rem; display: grid; gap: .35rem; }
 
 .hero-section { padding-top: calc(5rem + var(--nav-h)); padding-bottom: 5rem; position: relative; }
 .hero-inner { display: grid; grid-template-columns: 1fr; }
