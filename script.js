@@ -88,3 +88,39 @@ if (backToTop) {
     } catch (_) { /* ignore */ }
   }
 })();
+
+// Reveal on scroll
+(() => {
+  const items = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window) || items.length === 0) {
+    items.forEach(el => el.classList.add('revealed'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  items.forEach(el => io.observe(el));
+})();
+
+// Auto-detect profile image
+(async () => {
+  const img = document.getElementById('profileImg');
+  if (!img) return;
+  const candidates = [
+    'profile.jpg','profile.png','profile.webp',
+    'assets/profile.jpg','assets/profile.png','assets/profile.webp'
+  ];
+  const base = window.location.pathname.replace(/[^/]+$/, '');
+  for (const name of candidates) {
+    try {
+      const url = name.startsWith('assets/') ? base + name : base + name;
+      const res = await fetch(url, { method: 'HEAD' });
+      if (res.ok) { img.src = url; return; }
+    } catch (_) { /* ignore */ }
+  }
+})();
