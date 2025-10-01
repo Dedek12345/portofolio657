@@ -61,3 +61,29 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+// Auto-detect CV PDF file
+(async () => {
+  const link = document.getElementById('downloadCV');
+  if (!link) return;
+  const candidates = [
+    'CV.pdf',
+    'CV_Dedek_Rahmat.pdf',
+    'CV_Dedek Rahmat.pdf',
+    'Curriculum_Vitae.pdf',
+    'Resume.pdf',
+    'Dedek_Rahmat_CV.pdf',
+    'Dedek Rahmat CV.pdf'
+  ];
+  const base = window.location.pathname.replace(/[^/]+$/, '');
+  for (const name of candidates) {
+    try {
+      const url = base + encodeURI(name);
+      const res = await fetch(url, { method: 'HEAD' });
+      if (res.ok) {
+        link.href = url;
+        return;
+      }
+    } catch (_) { /* ignore */ }
+  }
+})();
