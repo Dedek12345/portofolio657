@@ -70,6 +70,7 @@ if (backToTop) {
     'CV.pdf',
     'CV_Dedek_Rahmat.pdf',
     'CV_Dedek Rahmat.pdf',
+    'Curriculum Vitae Dedek Rahmat.pdf',
     'Curriculum_Vitae.pdf',
     'Resume.pdf',
     'Dedek_Rahmat_CV.pdf',
