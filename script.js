@@ -124,3 +124,30 @@ if (backToTop) {
     } catch (_) { /* ignore */ }
   }
 })();
+
+// Visitor counter (based on refresh)
+(async () => {
+  const out = document.getElementById('visitCount');
+  if (!out) return;
+  const namespace = 'dedekrahmat';
+  const key = 'portofolio657_visits';
+  const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
+  try {
+    const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (typeof data.value === 'number') { out.textContent = data.value.toLocaleString(); return; }
+    }
+    throw new Error('CountAPI error');
+  } catch (e) {
+    // Fallback: localStorage increment (per browser)
+    try {
+      const lsKey = 'visitCountFallback';
+      const curr = parseInt(localStorage.getItem(lsKey) || '0', 10) + 1;
+      localStorage.setItem(lsKey, String(curr));
+      out.textContent = curr.toLocaleString();
+    } catch (_) {
+      out.textContent = '1';
+    }
+  }
+})();
